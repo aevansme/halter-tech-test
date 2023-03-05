@@ -1,0 +1,9 @@
+export enum HeatSymptomStatus {
+    HEAT_MOUNT_DETECTOR,
+    TAIL_PAINT_RUBBED,
+    STANDING,
+    VULVA_SIGNS,
+    ARCHED_BACK,
+    EXCITABLE,
+    RIDING
+}
