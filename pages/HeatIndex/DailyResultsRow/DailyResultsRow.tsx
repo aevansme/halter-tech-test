@@ -1,30 +1,26 @@
 import moment from 'moment';
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableHighlight } from 'react-native';
 import { DailyResult } from '../../../types/CowHeatResult';
 import { getFormattedDate } from '../../../utils/dateUtils';
-import Check from "./check.png";
+import Check from "../../../assets/check.png";
 
-const DailyResultsRow = (props: any) => {
-
-    const result: DailyResult = props.data;
+const DailyResultsRow = ({ data, handleClick }: { data: DailyResult, handleClick: any}) => {
 
     return (
         <View>
-            <Text>
-                {
-                    getFormattedDate(result.date)
-                }
-            </Text>
+            <Text>{getFormattedDate(data.date)}</Text>
             <View style={styles.container}>
                 {
-                    result.results.map(r => (
-                        <View key={r.cattleName} style={styles.item}>
-                            <Text>
-                                {r.cattleName}
-                            </Text>
-                            <Image  style={{width: 10, height: 10}} source={Check} alt="SHOWSOMETHING" />
-                        </View>
+                    data.results.map(result => (
+                        <TouchableHighlight key={result.cattleName} style={styles.item} onPress={() => handleClick(result)}>
+                            <View>
+                                <Text>
+                                    {result.cattleName}
+                                </Text>
+                                <Image style={{width: 15, height: 15}} source={Check} />
+                            </View>
+                        </TouchableHighlight >
                     ))
                 }
             </View>
@@ -45,6 +41,9 @@ const styles = StyleSheet.create({
       marginBottom: 10
     },
     item: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         width: 56,
         height: 56,
         margin: 12,
