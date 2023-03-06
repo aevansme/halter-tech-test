@@ -5,6 +5,8 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { HeatDetectionStatus } from '../../../enums/HeatDetectionStatus';
 import { HeatSymptomStatus } from '../../../enums/HeatSymptomStatus';
 import { convertSnakeToSentenceCase } from '../../../utils/stringUtils';
+import BinaryControl from '../../../components/BinaryControl/BinaryControl';
+import { getTimeSince } from '../../../utils/dateUtils';
 
 const EditResultsModal = ({ data, handleClose }: {data: CowHeatResult, handleClose: any}) => {
 
@@ -18,7 +20,15 @@ const EditResultsModal = ({ data, handleClose }: {data: CowHeatResult, handleClo
             transparent={true}>
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                    <Text>Cow {data.cattleName}</Text>
+                    {/* Top Row */}
+                    <View style={styles.headingContainer}>
+                        <Text style={styles.modalTitle}>Cow {data.cattleName}</Text>
+                        <Text style={styles.secondaryTitleText}>
+                            First detected <Text style={styles.innerText}>{getTimeSince(data.firstDetectedAt)}</Text> ago
+                        </Text>
+                    </View>
+                    
+                    {/* Middle Row */}
                     <View style={styles.checkboxContainer}>
                         {
                             Object.keys(HeatSymptomStatus).filter((v) => isNaN(Number(v))).map((value: any) => (
@@ -35,6 +45,14 @@ const EditResultsModal = ({ data, handleClose }: {data: CowHeatResult, handleClo
                             ))
                         }
                     </View>
+
+                     {/* Bottom Row */}
+                    <View style={styles.heatSelectionContainer}>
+                        <Text>Cow on heat?</Text>
+                        <BinaryControl></BinaryControl>
+                    </View>
+
+                     {/* Button/Submission Row */}
                     <Pressable
                         style={[styles.button, styles.buttonClose]}
                         onPress={handleClose}>
@@ -51,7 +69,6 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'flex-end',
       alignItems: 'center',
-      
     },
     modalView: {
         width: "100%",
@@ -67,6 +84,34 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5,
     },
+    headingContainer: {
+        paddingBottom: 15,
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    modalTitle: {
+        fontSize: 24,
+        fontWeight: "600"
+    },
+    secondaryTitleText: {
+        fontSize: 16
+    },
+    innerText: {
+        fontWeight: "500"
+    },
+    heatSelectionContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 15,
+        borderTopWidth: 2,
+        borderTopColor: '#D5D7DB',
+        borderBottomWidth: 2,
+        borderBottomColor: '#D5D7DB',
+        paddingVertical: 15
+    },
     button: {
         borderRadius: 8,
         paddingVertical: 12,
@@ -76,6 +121,7 @@ const styles = StyleSheet.create({
     },
     buttonClose: {
       backgroundColor: '#141518',
+      marginTop: 15
     },
     textStyle: {
       color: 'white',
@@ -85,7 +131,8 @@ const styles = StyleSheet.create({
     checkboxContainer: {
         display: 'flex',
         flexDirection: 'row',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        borderBottomColor: '#D5D7DB'
     }
   });
 

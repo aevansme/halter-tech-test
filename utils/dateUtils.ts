@@ -1,6 +1,25 @@
 import moment from "moment";
 import { DailyResult } from "../types/CowHeatResult";
 
+moment.locale('en', {
+    relativeTime: {
+      future: 'in %s',
+      past: '%s',
+      s:  '1s',
+      ss: '%ss',
+      m:  '1m',
+      mm: '%dm',
+      h:  '1h',
+      hh: '%dh',
+      d:  '1d',
+      dd: '%dd',
+      M:  '1M',
+      MM: '%dM',
+      y:  '1Y',
+      yy: '%dY'
+    }
+  })
+
 // Original code taken from SO article: https://stackoverflow.com/questions/46802448/how-do-i-group-items-in-an-array-by-date
 // Thought: Sort method could be added to the array.prototype. For now though, for
 //          simplicity, I'll leave this here and create unit tests for test coverge.
@@ -44,6 +63,10 @@ export const getFormattedDate = (date: Date): string => {
         lastWeek: 'ddd, d MMM',
         sameElse: 'ddd, d MMM'
     })
+}
+
+export const getTimeSince = (date: Date): string => {
+    return moment(date).fromNow();
 }
 
 
