@@ -64,3 +64,18 @@ it ("Should return an empty array when an the array parameter is empty", () => {
     // Assert
     expect(result.length).toBe(0);
 })
+
+it ("Should return an empty array when an invalid key is provided", () => {
+    // Arrange
+    const data: CowHeatResult[] = [{
+        "cattleName":"163",
+        "firstDetectedAt": new Date("2021-05-27T16:00:00.000Z"),
+        "id":"93c9d8b7-77ff-451c-8d0a-5bc321cc76fe",
+        "status": HeatDetectionStatus.DETECTED,
+        "symptoms":[]
+    }];
+
+    // Act & Assert
+    expect(() => groupByDate("DOESNTEXIST", data)).toThrow(Error);
+})
+

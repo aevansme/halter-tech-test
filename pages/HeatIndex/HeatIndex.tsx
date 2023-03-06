@@ -3,30 +3,27 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { ResultsContext } from "../../context/HeatResultsProvider";
+import DailyResultsRow from './DailyResultsRow/DailyResultsRow';
+import { DailyResult } from '../../types/CowHeatResult';
 
 export default function HeatIndex() {
   
     const resultsContext: any = useContext(ResultsContext); 
-    console.log(resultsContext);
 
     return (
         <View style={styles.container}>
-            
-            <Text>asdf {resultsContext.map((r: any) => r.id)}</Text> 
-            
-            <Text>Cows Cycledasdf</Text>
-            <Text>95%</Text>
-            <Text>20d since PSM</Text>
+            {
+                resultsContext.map((r: DailyResult) => (
+                    <DailyResultsRow data={r} key={r.date.getTime()}></DailyResultsRow>
+                ))
+            }  
         </View>
     )
 };
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+      margin: 10
     },
   });
   
