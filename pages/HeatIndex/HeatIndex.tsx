@@ -1,17 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import { View } from 'react-native';
-
-import { ResultsContext } from "../../context/HeatResultsProvider";
-import DailyResultsRow from './DailyResultsRow/DailyResultsRow';
+import { IResultsContext, ResultsContext } from "../../context/HeatResultsProvider";
 import { CowHeatResult, DailyResult } from '../../types/CowHeatResult';
-import EditResultsModal from './EditResultsModal/EditResultsModal';
-import HerdStatisticsRow from './HerdStatisticsRow/HerdStatisticsRow';
 import { getFormattedDate } from '../../utils/dateUtils';
+import DailyResultsRow from './DailyResultsRow/DailyResultsRow';
+import EditResultsModal from './EditResultsModal/EditResultsModal';
 import { styles } from './HeatIndexStyles';
+import HerdStatisticsRow from './HerdStatisticsRow/HerdStatisticsRow';
 
 export default function HeatIndex() {
   
-    const resultsContext: any = useContext(ResultsContext); 
+    const resultsContext: IResultsContext = useContext(ResultsContext); 
     const [selectedResult, setSelectedResult] = useState<CowHeatResult | null>(null);
 
     // Modal Event Handlers

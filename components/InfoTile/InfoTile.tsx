@@ -1,6 +1,5 @@
-import React from 'react'
-import { View, Text } from 'react-native';
-
+import React from 'react';
+import { Text, View } from 'react-native';
 import { typographyStyles } from '../../assets/styles/typography';
 import { styles } from './InfoTileStyles';
 

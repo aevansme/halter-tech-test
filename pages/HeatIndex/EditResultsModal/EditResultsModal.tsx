@@ -1,17 +1,17 @@
-import React from 'react'
-import { Modal, Pressable, View, Text } from 'react-native';
-import { CowHeatResult } from '../../../types/CowHeatResult';
-import { HeatSymptomStatus } from '../../../enums/HeatSymptomStatus';
-import { convertSnakeToSentenceCase } from '../../../utils/stringUtils';
-import BinaryControl from '../../../components/BinaryControl/BinaryControl';
-import { getTimeSince } from '../../../utils/dateUtils';
-import CustomCheckbox from '../../../components/CustomCheckbox/CustomCheckbox';
+import React from 'react';
+import { GestureResponderEvent, Modal, Pressable, Text, View } from 'react-native';
 import { typographyStyles } from '../../../assets/styles/typography';
+import BinaryControl from '../../../components/BinaryControl/BinaryControl';
+import CustomCheckbox from '../../../components/CustomCheckbox/CustomCheckbox';
+import { HeatSymptomStatus } from '../../../enums/HeatSymptomStatus';
+import { CowHeatResult } from '../../../types/CowHeatResult';
+import { getTimeSince } from '../../../utils/dateUtils';
+import { convertSnakeToSentenceCase } from '../../../utils/stringUtils';
 import { styles } from './EditResultsModalStyles';
 
 interface IEditResultsModal {
     data: CowHeatResult, 
-    handleClose: any
+    handleClose: GestureResponderEvent
 }
 
 const EditResultsModal = ({ data, handleClose }: IEditResultsModal) => {

@@ -1,14 +1,12 @@
-import React from 'react'
-import { Text, View, Image, TouchableHighlight } from 'react-native';
-
-import { CowHeatResult } from '../../../types/CowHeatResult';
-import { getTimeSince } from '../../../utils/dateUtils';
-import { HeatDetectionStatus } from '../../../enums/HeatDetectionStatus';
-
-import { typographyStyles } from '../../../assets/styles/typography';
-import { globalStyles } from '../../../assets/styles/globalStyles';
+import React from 'react';
+import { Image, Text, TouchableHighlight, View } from 'react-native';
 import Check from "../../../assets/images/check.png";
 import Cross from "../../../assets/images/close.png";
+import { globalStyles } from '../../../assets/styles/globalStyles';
+import { typographyStyles } from '../../../assets/styles/typography';
+import { HeatDetectionStatus } from '../../../enums/HeatDetectionStatus';
+import { CowHeatResult } from '../../../types/CowHeatResult';
+import { getTimeSince } from '../../../utils/dateUtils';
 import { styles } from './DailyResultsRowStyles';
 
 interface IDailyResultsRowPropTypes { 

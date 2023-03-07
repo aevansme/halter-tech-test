@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { View, StyleSheet } from 'react-native'
-
-import InfoTile from '../../../components/InfoTile/InfoTile'
+import React, { useEffect, useState } from 'react';
+import { View } from 'react-native';
+import InfoTile from '../../../components/InfoTile/InfoTile';
 import { HeatDetectionStatus } from '../../../enums/HeatDetectionStatus';
 import { CowHeatResult } from '../../../types/CowHeatResult';
 import { styles } from './HerdStatisticsRowStyles';
+
 
 const HerdStatisticsRow = ({data}: {data: any[]}) => {
     // Data for info/statistics

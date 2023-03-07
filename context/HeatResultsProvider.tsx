@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react';
 import DATA from '../data/data';
 import { HeatDetectionStatus } from '../enums/HeatDetectionStatus';
 import { CowHeatResult, DailyResult } from '../types/CowHeatResult';

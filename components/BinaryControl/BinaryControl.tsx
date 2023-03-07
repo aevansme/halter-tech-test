@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { View, Pressable } from 'react-native'
+import React, { useState } from 'react';
+import { Pressable, View } from 'react-native';
 import { globalStyles } from '../../assets/styles/globalStyles';
 import { styles } from './BinaryControlStyles';
 
