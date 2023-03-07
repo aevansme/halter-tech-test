@@ -41,7 +41,8 @@ export default function HeatIndex() {
 
 const styles = StyleSheet.create({
     container: {
-      margin: 10
+      width: 375,
+      padding: 30
     },
   });
   
