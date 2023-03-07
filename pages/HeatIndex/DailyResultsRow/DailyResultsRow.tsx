@@ -1,24 +1,34 @@
-import moment from 'moment';
 import React from 'react'
-import { StyleSheet, Text, View, Image, Button, TouchableHighlight } from 'react-native';
-import { DailyResult } from '../../../types/CowHeatResult';
-import { getFormattedDate } from '../../../utils/dateUtils';
-import Check from "../../../assets/check.png";
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
 
-const DailyResultsRow = ({ data, handleClick }: { data: DailyResult, handleClick: any}) => {
+import { CowHeatResult } from '../../../types/CowHeatResult';
+import { getTimeSince } from '../../../utils/dateUtils';
+import Check from "../../../assets/check.png";
+import Cross from "../../../assets/close.png";
+import { HeatDetectionStatus } from '../../../enums/HeatDetectionStatus';
+
+const DailyResultsRow = ({ title, results, handleClick }: { title: string, results: CowHeatResult[], handleClick: any}) => {
 
     return (
         <View>
-            <Text>{getFormattedDate(data.date)}</Text>
+            <Text>{title}</Text>
             <View style={styles.container}>
                 {
-                    data.results.map(result => (
+                    results.map(result => (
                         <TouchableHighlight key={result.cattleName} style={styles.item} onPress={() => handleClick(result)}>
                             <View>
                                 <Text>
                                     {result.cattleName}
                                 </Text>
-                                <Image style={{width: 15, height: 15}} source={Check} />
+                                {
+                                    result.status === HeatDetectionStatus.DETECTED ? getTimeSince(result.firstDetectedAt) : null
+                                }
+                                {
+                                    result.status === HeatDetectionStatus.ON_HEAT ? <Image style={{width: 15, height: 15}} source={Check} /> : null
+                                }
+                                {
+                                    result.status === HeatDetectionStatus.NOT_ON_HEAT ? <Image style={{width: 15, height: 15}} source={Cross} /> : null
+                                }
                             </View>
                         </TouchableHighlight >
                     ))

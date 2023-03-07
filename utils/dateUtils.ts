@@ -54,6 +54,7 @@ export const sortByDate = (key: string, data: any[]): any => {
 }
 
 // TODO: Crete unit test coverage
+// TODO: Memoization - This is a pure function as doesn't need to be repeatidly executed for the same input params
 export const getFormattedDate = (date: Date): string => {
     return moment(date).calendar({
         sameDay: '[Today]',

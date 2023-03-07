@@ -1,5 +1,5 @@
 export enum HeatDetectionStatus {
-    DETECTED,
-    ON_HEAT,
-    NOT_ON_HEAT
+    DETECTED = "DETECTED",
+    ON_HEAT = "ON_HEAT",
+    NOT_ON_HEAT = "NOT_ON_HEAT"
 }

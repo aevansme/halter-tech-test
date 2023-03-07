@@ -1,11 +1,13 @@
-import React, { useContext, useState } from 'react'
-import { StatusBar } from 'expo-status-bar';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react'
+import { StyleSheet, Text, View } from 'react-native';
 
 import { ResultsContext } from "../../context/HeatResultsProvider";
 import DailyResultsRow from './DailyResultsRow/DailyResultsRow';
 import { CowHeatResult, DailyResult } from '../../types/CowHeatResult';
 import EditResultsModal from './EditResultsModal/EditResultsModal';
+import HerdStatisticsRow from './HerdStatisticsRow/HerdStatisticsRow';
+import { HeatDetectionStatus } from '../../enums/HeatDetectionStatus';
+import { getFormattedDate } from '../../utils/dateUtils';
 
 export default function HeatIndex() {
   
@@ -16,11 +18,18 @@ export default function HeatIndex() {
     const handleOpen = (data: CowHeatResult) => setSelectedResult(data)
     const handleClose = () => setSelectedResult(null)
 
+    useEffect(() => {
+
+    }, [])
+
     return (
         <View style={styles.container}>
+            <HerdStatisticsRow data={resultsContext.results}></HerdStatisticsRow>
+
+            { resultsContext.unconfirmedResults && <DailyResultsRow title="Unconfirmed heat" results={resultsContext.unconfirmedResults} handleClick={handleOpen}></DailyResultsRow>}
             {
-                resultsContext.map((r: DailyResult) => (
-                    <DailyResultsRow data={r} key={r.date.getTime()} handleClick={handleOpen}></DailyResultsRow>
+                resultsContext.groupedResults.map((r: DailyResult) => (
+                    <DailyResultsRow title={getFormattedDate(r.date)} results={r.results} key={r.date.getTime()} handleClick={handleOpen}></DailyResultsRow>
                 ))
             }  
             {
