@@ -18,6 +18,7 @@ I assumed it might be worth directing you to some points-of-interest in the app 
 
 ### :bomb: List of future features I would like to develop
 
+- Linting & Formatting - Enforce formatting across the projects
 - Routing - As we add more pages to the app
 - Absolute imports - Particularly for common imports. ie. "@assets/images/" rather than "../../../assets/images"
 - Loading spinners - Whilst fetching from API
