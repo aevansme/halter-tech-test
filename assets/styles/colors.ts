@@ -5,7 +5,8 @@ interface IColorPallette {
     secondary: string,
     danger: string,
     lightGray: string,
-    lighterGray: string
+    lighterGray: string,
+    white: string
 }
 
 // By creating a global design system we can ensure future changes
@@ -15,5 +16,6 @@ export const palette: IColorPallette = {
     secondary: '#717378',
     lightGray: '#D5D7DB',
     lighterGray: '#F2F3F5',
-    danger: '#E41D1D'
+    danger: '#E41D1D',
+    white: 'white'
 }

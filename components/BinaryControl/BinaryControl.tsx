@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Button, View, StyleSheet, Pressable } from 'react-native'
+import { globalStyles } from '../../assets/styles/globalStyles';
+import { variables } from '../../assets/styles/variables';
 
 const BinaryControl = (props: any) => {
 
@@ -15,14 +17,14 @@ const BinaryControl = (props: any) => {
             <Pressable
                 onPress={handleClick}
                 accessibilityLabel="No selection option"
-                style={[styles.button, styles.leftButton, !isSelected ? styles.selected : styles.unselected]}
+                style={[styles.button, globalStyles.flexCenter, styles.leftButton, !isSelected ? styles.selected : styles.unselected]}
             >
                 No
             </Pressable>
             <Pressable
                 onPress={handleClick}
                 accessibilityLabel="Yes selection option"
-                style={[styles.button, styles.rightButton, isSelected ? styles.selected : styles.unselected]}
+                style={[styles.button, globalStyles.flexCenter, styles.rightButton, isSelected ? styles.selected : styles.unselected]}
             >
                 Yes
             </Pressable>
@@ -39,17 +41,15 @@ const styles = StyleSheet.create({
     button: {
         width: 89,
         height: 48,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        fontFamily: variables.fontFamily
     },
     leftButton: {
-        borderTopLeftRadius: 8,
-        borderBottomLeftRadius: 8        
+        borderTopLeftRadius: variables.borderRadiusM,
+        borderBottomLeftRadius: variables.borderRadiusM       
     },
     rightButton: {
-        borderTopRightRadius: 8,
-        borderBottomRightRadius: 8
+        borderTopRightRadius: variables.borderRadiusM,
+        borderBottomRightRadius: variables.borderRadiusM
     },
     selected: {
         backgroundColor: "#141518",

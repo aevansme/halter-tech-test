@@ -7,6 +7,10 @@ import { HeatSymptomStatus } from '../../../enums/HeatSymptomStatus';
 import { convertSnakeToSentenceCase } from '../../../utils/stringUtils';
 import BinaryControl from '../../../components/BinaryControl/BinaryControl';
 import { getTimeSince } from '../../../utils/dateUtils';
+import CustomCheckbox from '../../../components/CustomCheckbox/CustomCheckbox';
+import { typographyStyles } from '../../../assets/styles/typography';
+import { palette } from '../../../assets/styles/colors';
+import { variables } from '../../../assets/styles/variables';
 
 const EditResultsModal = ({ data, handleClose }: {data: CowHeatResult, handleClose: any}) => {
 
@@ -22,8 +26,8 @@ const EditResultsModal = ({ data, handleClose }: {data: CowHeatResult, handleClo
                 <View style={styles.modalView}>
                     {/* Top Row */}
                     <View style={styles.headingContainer}>
-                        <Text style={styles.modalTitle}>Cow {data.cattleName}</Text>
-                        <Text style={styles.secondaryTitleText}>
+                        <Text style={typographyStyles.headingTwo}>Cow {data.cattleName}</Text>
+                        <Text style={typographyStyles.secondaryText}>
                             First detected <Text style={styles.innerText}>{getTimeSince(data.firstDetectedAt)}</Text> ago
                         </Text>
                     </View>
@@ -32,16 +36,7 @@ const EditResultsModal = ({ data, handleClose }: {data: CowHeatResult, handleClo
                     <View style={styles.checkboxContainer}>
                         {
                             Object.keys(HeatSymptomStatus).filter((v) => isNaN(Number(v))).map((value: any) => (
-                                <BouncyCheckbox 
-                                    onPress={(isChecked: boolean) => {}} 
-                                    fillColor="black"
-                                    isChecked={data.symptoms.includes(value)}
-                                    text={convertSnakeToSentenceCase(value)}
-                                    iconStyle={{ borderColor: "black", borderRadius: 0}}
-                                    textStyle={{ textDecorationLine: "none", color: "#404145", fontSize: 14}}
-                                    innerIconStyle={{borderRadius: 0}}
-                                    style={{backgroundColor: "#E8EAED", display: "flex", margin: 2, paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8 }}
-                                /> 
+                                <CustomCheckbox text={convertSnakeToSentenceCase(value)} isChecked={data.symptoms.includes(value)} key={value}></CustomCheckbox>
                             ))
                         }
                     </View>
@@ -91,13 +86,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between'
     },
-    modalTitle: {
-        fontSize: 24,
-        fontWeight: "600"
-    },
-    secondaryTitleText: {
-        fontSize: 16
-    },
     innerText: {
         fontWeight: "500"
     },
@@ -106,21 +94,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 15,
-        borderTopWidth: 2,
-        borderTopColor: '#D5D7DB',
-        borderBottomWidth: 2,
-        borderBottomColor: '#D5D7DB',
-        paddingVertical: 15
+        borderTopWidth: variables.borderWidth,
+        borderTopColor: palette.lightGray,
+        borderBottomWidth: variables.borderWidth,
+        borderBottomColor: palette.lightGray,
+        paddingVertical: 25
     },
     button: {
-        borderRadius: 8,
+        borderRadius: variables.borderRadiusM,
         paddingVertical: 12,
         paddingHorizontal: 16,
         elevation: 2,
         width: "100%"
     },
     buttonClose: {
-      backgroundColor: '#141518',
+      backgroundColor: palette.primary,
       marginTop: 15
     },
     textStyle: {
@@ -132,7 +120,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        borderBottomColor: '#D5D7DB'
+        borderBottomColor: palette.lightGray
     }
   });
 
