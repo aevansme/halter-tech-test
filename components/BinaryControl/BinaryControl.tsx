@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Button, View, StyleSheet, Pressable } from 'react-native'
+import { View, Pressable } from 'react-native'
 import { globalStyles } from '../../assets/styles/globalStyles';
-import { variables } from '../../assets/styles/variables';
+import { styles } from './BinaryControlStyles';
 
 const BinaryControl = (props: any) => {
 
@@ -31,34 +31,5 @@ const BinaryControl = (props: any) => {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    buttonContainer: {
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'flex-end',
-    },
-    button: {
-        width: 89,
-        height: 48,
-        fontFamily: variables.fontFamily
-    },
-    leftButton: {
-        borderTopLeftRadius: variables.borderRadiusM,
-        borderBottomLeftRadius: variables.borderRadiusM       
-    },
-    rightButton: {
-        borderTopRightRadius: variables.borderRadiusM,
-        borderBottomRightRadius: variables.borderRadiusM
-    },
-    selected: {
-        backgroundColor: "#141518",
-        color: "#FFF"
-    },
-    unselected: {
-        backgroundColor: "#E8EAED",
-        color: "#141518"
-    }
-})
 
 export default BinaryControl

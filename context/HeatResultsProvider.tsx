@@ -1,23 +1,33 @@
 import React, { createContext, useEffect, useState } from 'react'
 import DATA from '../data/data';
 import { HeatDetectionStatus } from '../enums/HeatDetectionStatus';
-import { CowHeatResult } from '../types/CowHeatResult';
+import { CowHeatResult, DailyResult } from '../types/CowHeatResult';
 import { groupByDate, sortByDate } from '../utils/dateUtils';
+
+export interface IResultsContext {
+    results: CowHeatResult[],
+    groupedResults: DailyResult[],
+    unconfirmedResults: CowHeatResult[]
+}
+
+interface IHeatResultsPropTypes {
+    children: JSX.Element | JSX.Element[]
+}
 
 export const ResultsContext = createContext({});
 
-const HeatResultsProvider = (props: any) => {
+const HeatResultsProvider = ({ children }: IHeatResultsPropTypes) => {
 
-    const { children } = props;
     const [ results, setResults ] = useState<CowHeatResult[]>([])
-    const [ groupedResults, setGroupedResults ] = useState<any[]>([]);
-    const [ unconfirmedResults, setUnconfirmedResults ] = useState<any[]>([]);
+    const [ groupedResults, setGroupedResults ] = useState<DailyResult[]>([]);
+    const [ unconfirmedResults, setUnconfirmedResults ] = useState<CowHeatResult[]>([]);
 
     useEffect(() => {
-        // TODO: Use axios
-        //fetch("../data/data.ts").then(response => response.json()).then(response => {
-            setResults(DATA);
-        //})
+        // Note: Promise/Fetch implementation of Cow Results
+        // fetch("urlgoeshere").then(response => response.json()).then(response => {
+        //     setResults(response);
+        // })
+        setResults(DATA);
     }, [])
 
     useEffect(() => {

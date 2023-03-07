@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
-import { Modal, Pressable, View, Text, StyleSheet } from 'react-native';
+import React from 'react'
+import { Modal, Pressable, View, Text } from 'react-native';
 import { CowHeatResult } from '../../../types/CowHeatResult';
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { HeatDetectionStatus } from '../../../enums/HeatDetectionStatus';
 import { HeatSymptomStatus } from '../../../enums/HeatSymptomStatus';
 import { convertSnakeToSentenceCase } from '../../../utils/stringUtils';
 import BinaryControl from '../../../components/BinaryControl/BinaryControl';
 import { getTimeSince } from '../../../utils/dateUtils';
 import CustomCheckbox from '../../../components/CustomCheckbox/CustomCheckbox';
 import { typographyStyles } from '../../../assets/styles/typography';
-import { palette } from '../../../assets/styles/colors';
-import { variables } from '../../../assets/styles/variables';
+import { styles } from './EditResultsModalStyles';
 
-const EditResultsModal = ({ data, handleClose }: {data: CowHeatResult, handleClose: any}) => {
+interface IEditResultsModal {
+    data: CowHeatResult, 
+    handleClose: any
+}
+
+const EditResultsModal = ({ data, handleClose }: IEditResultsModal) => {
 
     const handleCheck = (value: CowHeatResult, enumVal: HeatSymptomStatus) => {
-        // value.symptoms.
+        // ..... Update symptoms in global store.
     }
     
     return (
@@ -58,70 +60,5 @@ const EditResultsModal = ({ data, handleClose }: {data: CowHeatResult, handleClo
         </Modal>
     )
 }
-
-const styles = StyleSheet.create({
-    centeredView: {
-      flex: 1,
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-    },
-    modalView: {
-        width: "100%",
-        backgroundColor: 'white',
-        borderRadius: 24,
-        padding: 20,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
-    },
-    headingContainer: {
-        paddingBottom: 15,
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between'
-    },
-    innerText: {
-        fontWeight: "500"
-    },
-    heatSelectionContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginTop: 15,
-        borderTopWidth: variables.borderWidth,
-        borderTopColor: palette.lightGray,
-        borderBottomWidth: variables.borderWidth,
-        borderBottomColor: palette.lightGray,
-        paddingVertical: 25
-    },
-    button: {
-        borderRadius: variables.borderRadiusM,
-        paddingVertical: 12,
-        paddingHorizontal: 16,
-        elevation: 2,
-        width: "100%"
-    },
-    buttonClose: {
-      backgroundColor: palette.primary,
-      marginTop: 15
-    },
-    textStyle: {
-      color: 'white',
-      fontWeight: 'bold',
-      textAlign: 'center',
-    },
-    checkboxContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        borderBottomColor: palette.lightGray
-    }
-  });
 
 export default EditResultsModal;
