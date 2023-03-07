@@ -3,7 +3,15 @@ import { CowHeatResult } from "../types/CowHeatResult";
 // Note: I've used any as a type as this is only
 // used to mock an API call. In a real life situation
 // we would only receive the results
-const RAW_DATA: any[] = [
+interface IRawResult {
+   cattleName: string;
+   firstDetectedAt: string;
+   id: string;
+   status: string;
+   symptoms: string[];
+}
+
+const RAW_DATA: IRawResult[] = [
    {
       "cattleName":"163",
       "firstDetectedAt":"2021-05-27T16:00:00.000Z",
@@ -1048,7 +1056,7 @@ const RAW_DATA: any[] = [
 const BASE_DATE = new Date('2021-05-28T03:10:35.398Z'); // date when this data was collected
 const OFFSET = Date.now() - BASE_DATE.getTime(); // finds the difference between now and when the data was collected
 
-const DATA: CowHeatResult[] = RAW_DATA.map((item) => ({
+const DATA: any[] = RAW_DATA.map((item: IRawResult) => ({
    ...item,
    firstDetectedAt: new Date(new Date(item.firstDetectedAt).getTime() + OFFSET).toISOString(), // move everything forward so it's relevant to today
 }));

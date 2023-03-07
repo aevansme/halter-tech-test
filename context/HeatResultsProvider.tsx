@@ -10,11 +10,12 @@ export interface IResultsContext {
     unconfirmedResults: CowHeatResult[]
 }
 
+// Example: PropsWithChildren import 'react'
 interface IHeatResultsPropTypes {
     children: JSX.Element | JSX.Element[]
 }
 
-export const ResultsContext = createContext({});
+export const ResultsContext = createContext<IResultsContext>({results: [], groupedResults: [], unconfirmedResults: []});
 
 const HeatResultsProvider = ({ children }: IHeatResultsPropTypes) => {
 
@@ -33,8 +34,8 @@ const HeatResultsProvider = ({ children }: IHeatResultsPropTypes) => {
     useEffect(() => {
         if (results && results.length > 0) {
             // 1. Group cows/results which have been confirmed to organise by date
-            const heatResultsByDate: any[] = groupByDate("firstDetectedAt", results.filter(d => d.status !== HeatDetectionStatus.DETECTED));
-            const sortedResult: any[] = sortByDate("date", heatResultsByDate);
+            const heatResultsByDate: DailyResult[] = groupByDate("firstDetectedAt", results.filter(d => d.status !== HeatDetectionStatus.DETECTED));
+            const sortedResult: DailyResult[] = sortByDate("date", heatResultsByDate);
             setGroupedResults(sortedResult);
 
             // 2. Track unconfirmed results to bump to top of page for confirmation.

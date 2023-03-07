@@ -12,7 +12,7 @@ import { styles } from './DailyResultsRowStyles';
 interface IDailyResultsRowPropTypes { 
     title: string, 
     results: CowHeatResult[], 
-    handleClick: any
+    handleClick: (r: CowHeatResult) => void
 }
 
 const DailyResultsRow = ({ title, results, handleClick }: IDailyResultsRowPropTypes) => {

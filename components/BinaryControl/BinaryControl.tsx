@@ -3,7 +3,11 @@ import { Pressable, View } from 'react-native';
 import { globalStyles } from '../../assets/styles/globalStyles';
 import { styles } from './BinaryControlStyles';
 
-const BinaryControl = (props: any) => {
+interface IBinaryControl {
+    handleClick: (isSelected: boolean) => void
+}
+
+const BinaryControl = (props: IBinaryControl) => {
 
     const [isSelected, setIsSelected] = useState(false);
 

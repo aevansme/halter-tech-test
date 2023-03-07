@@ -5,8 +5,11 @@ import { HeatDetectionStatus } from '../../../enums/HeatDetectionStatus';
 import { CowHeatResult } from '../../../types/CowHeatResult';
 import { styles } from './HerdStatisticsRowStyles';
 
+interface IHerdStatisticRowPropTypes {
+    data: CowHeatResult[]
+}
 
-const HerdStatisticsRow = ({data}: {data: any[]}) => {
+const HerdStatisticsRow = ({data}: IHerdStatisticRowPropTypes) => {
     // Data for info/statistics
     const [percentageOfCowsCycled, setPercentageOfCowsCycled] = useState(0);
     const [amountOfCowsUncycled, setAmountOfCowsUncycled] = useState(0)

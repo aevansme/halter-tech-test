@@ -1,5 +1,5 @@
 import { HeatDetectionStatus } from "../enums/HeatDetectionStatus";
-import { CowHeatResult } from "../types/CowHeatResult";
+import { CowHeatResult, DailyResult } from "../types/CowHeatResult";
 import { groupByDate } from "./dateUtils";
 
 // Positive Test Cases
@@ -14,7 +14,7 @@ it ("Should group a single result by it's detection date", () => {
     }];
 
     // Act
-    const result: any[] = groupByDate("firstDetectedAt", data);
+    const result: DailyResult[] = groupByDate("firstDetectedAt", data);
 
     // Assert
     expect(result.length).toBe(1);

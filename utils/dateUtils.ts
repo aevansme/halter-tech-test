@@ -1,5 +1,5 @@
 import moment from "moment";
-import { DailyResult } from "../types/CowHeatResult";
+import { CowHeatResult, DailyResult } from "../types/CowHeatResult";
 
 moment.locale('en', {
     relativeTime: {
@@ -49,7 +49,7 @@ export const groupByDate = (key: string, data: any[]): DailyResult[] => {
 }
 
 // TODO: Create unit test coverage for this in dateUtils.spect.ts similar to groupByDate above
-export const sortByDate = (key: string, data: any[]): any => {
+export const sortByDate = (key: string, data: DailyResult[]): DailyResult[] => {
     return data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 

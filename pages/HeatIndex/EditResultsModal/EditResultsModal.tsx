@@ -11,7 +11,7 @@ import { styles } from './EditResultsModalStyles';
 
 interface IEditResultsModal {
     data: CowHeatResult, 
-    handleClose: GestureResponderEvent
+    handleClose: (evnt: GestureResponderEvent) => void 
 }
 
 const EditResultsModal = ({ data, handleClose }: IEditResultsModal) => {
