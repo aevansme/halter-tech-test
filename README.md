@@ -11,7 +11,7 @@ Hi there! :wave: My name is Andy, and this is my Heat-Detection/Tech-Test submis
 
 I assumed it might be worth directing you to some points-of-interest in the app which I would be looking for if I was reviewing this :blush:
 
-- Evidence of [Unit Testing using Jest](https://github.com/aevansme/halter-tech-test/blob/main/utils/dateUtils.spec.ts), note how these functions are pure and easily testable. Examples of [Unit Testing using RTL](https://github.com/aevansme/halter-tech-test/blob/main/utils/dateUtils.spec.ts).
+- Evidence of [Unit Testing using Jest](https://github.com/aevansme/halter-tech-test/blob/main/utils/dateUtils.spec.ts), note how these functions are pure and easily testable. 
 - [Maintable global style structure](https://github.com/aevansme/halter-tech-test/tree/main/assets/styles)
 - [Application state using Context API](https://github.com/aevansme/halter-tech-test/blob/main/context/HeatResultsProvider.tsx)
 - Other than that, I hope you enjoy reviewing this app. I've made plenty of assumptions whilst building this app, and would love to have a chance to discuss these with you.
